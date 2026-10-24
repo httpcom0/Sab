@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jaafar Social & Platformer - Technical Blueprint</title>
+    <style>
+        :root {
+            --primary: #FF6B35;
+            --secondary: #004E64;
+            --accent: #25A18E;
+            --yellow: #FFD166;
+            --dark: #1E1E24;
+            --light: #F8F9FA;
+            --card-bg: #FFFFFF;
+            --border: #E2E8F0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: #F0F4F8;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--dark) 100%);
+            color: white;
+            padding: 2.5rem 1.5rem;
+            text-align: center;
+            border-bottom: 5px solid var(--primary);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            letter-spacing: 1px;
+        }
+
+        header p {
+            margin-top: 0.5rem;
+            color: var(--yellow);
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05), 0 1px 3px rgba(0,0,0,0.1);
+            border: 1px solid var(--border);
+        }
+
+        h2 {
+            color: var(--secondary);
+            border-left: 5px solid var(--primary);
+            padding-left: 10px;
+            margin-top: 0;
+        }
+
+        h3 {
+            color: var(--accent);
+            margin-top: 1.5rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .box {
+            background: var(--light);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.2rem;
+        }
+
+        .box h4 {
+            margin-top: 0;
+            color: var(--primary);
+        }
+
+        code {
+            background: #272822;
+            color: #F8F8F2;
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9em;
+        }
+
+        pre {
+            background: #272822;
+            color: #F8F8F2;
+            padding: 1rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-size: 0.9em;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.6rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            color: white;
+            background-color: var(--primary);
+            margin-right: 0.5rem;
+        }
+
+        .badge.secondary { background-color: var(--secondary); }
+        .badge.accent { background-color: var(--accent); }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        table, th, td {
+            border: 1px solid var(--border);
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: var(--secondary);
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: var(--light);
+        }
+
+        ul {
+            padding-left: 1.2rem;
+        }
+
+        .timeline {
+            border-left: 3px solid var(--accent);
+            padding-left: 1.5rem;
+            margin-left: 0.5rem;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 1.5rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -1.95rem;
+            top: 0.3rem;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--accent);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: #718096;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Jaafar App (جعفير)</h1>
+        <p>Full-Stack Architecture & Game Design Blueprint</p>
+    </header>
+
+    <div class="container">
+
+        <!-- Executive Summary -->
+        <div class="card">
+            <h2>1. Concept & Brand Identity</h2>
+            <p><strong>App Overview:</strong> A hybrid mobile experience that seamlessly bridges social media networking with retro 2D platformer gaming, centered around the adventurous mascot cat, <strong>Jaafar (جعفير)</strong>.</p>
+            <div class="grid">
+                <div class="box">
+                    <h4>Target Audience</h4>
+                    <p>Casual mobile gamers, cat lovers, pet influencers, and social media users who enjoy interactive minigames and competitive leaderboard flexes.</p>
+                </div>
+                <div class="box">
+                    <h4>Mascot & Aesthetics</h4>
+                    <p><strong>Jaafar:</strong> A playful orange tabby cat with a red headband. Design uses vibrant retro colors (arcade yellow, orange, cyan blue) paired with clean modern social interfaces.</p>
+                </div>
+                <div class="box">
+                    <h4>Key Differentiator</h4>
+                    <p>Direct bridge between social status and gameplay achievement: unlock post filters via high scores, post game replays directly to feed, and challenge followers in real-time co-op/versus modes.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- System Architecture & Tech Stack -->
+        <div class="card">
+            <h2>2. System Architecture & Tech Stack</h2>
+            <p>To ensure 60 FPS 2D game performance alongside smooth social feed rendering, the recommended architecture utilizes a cross-platform client with isolated game state runtime.</p>
+            
+            <div class="grid">
+                <div class="box">
+                    <span class="badge">Mobile Client</span>
+                    <h4>Flutter (Dart) + Flame Engine</h4>
+                    <ul>
+                        <li><strong>UI Framework:</strong> Flutter (High-performance 60fps UI for iOS & Android).</li>
+                        <li><strong>Game Engine:</strong> Flame Engine (Lightweight 2D engine running inside Flutter canvas for seamless transition without context switching).</li>
+                        <li><strong>State Management:</strong> Flutter Bloc / Riverpod.</li>
+                    </ul>
+                </div>
+                <div class="box">
+                    <span class="badge secondary">Backend & APIs</span>
+                    <h4>Node.js + NestJS Framework</h4>
+                    <ul>
+                        <li><strong>API Gateway:</strong> REST & GraphQL for social feed data fetching.</li>
+                        <li><strong>Real-time Multiplayer:</strong> Socket.io / WebSocket server for 2-player game synchronization and direct messaging.</li>
+                        <li><strong>Authentication:</strong> OAuth 2.0 (Google, Apple) + JWT.</li>
+                    </ul>
+                </div>
+                <div class="box">
+                    <span class="badge accent">Database & Storage</span>
+                    <h4>PostgreSQL + Redis + S3</h4>
+                    <ul>
+                        <li><strong>Primary Database:</strong> PostgreSQL (Relational integrity for profiles, posts, social graph).</li>
+                        <li><strong>Cache/Leaderboard:</strong> Redis (High-speed rank caching, fast session management).</li>
+                        <li><strong>Media Assets:</strong> AWS S3 / Cloudflare R2 (Images, video reels, game sprite sheets).</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Database Schema -->
+        <div class="card">
+            <h2>3. Database Schema Blueprint</h2>
+            <p>Relational database model designed for high throughput and clean data segregation between social and game systems.</p>
+
+            <h3>Core Tables Schema</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Table Name</th>
+                        <th>Key Fields</th>
+                        <th>Relationships & Notes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>users</code></td>
+                        <td>id, username, email, avatar_url, bio, created_at</td>
+                        <td>Primary entity for authentication and social profiles.</td>
+                    </tr>
+                    <tr>
+                        <td><code>posts</code></td>
+                        <td>id, user_id, media_type (image/video), media_url, caption, high_score_attached, created_at</td>
+                        <td>FK to <code>users</code>. Optional link to a game session score for "flexing".</td>
+                    </tr>
+                    <tr>
+                        <td><code>game_scores</code></td>
+                        <td>id, user_id, score, level_id, fish_treats_collected, play_time_seconds, created_at</td>
+                        <td>FK to <code>users</code>. Drives local and global leaderboards in Redis.</td>
+                    </tr>
+                    <tr>
+                        <td><code>player_inventory</code></td>
+                        <td>id, user_id, item_id (skins, hats for Jaafar), equipped_status, acquired_at</td>
+                        <td>FK to <code>users</code>. Stores cosmetic items unlocked via gameplay/achievements.</td>
+                    </tr>
+                    <tr>
+                        <td><code>direct_messages</code></td>
+                        <td>id, sender_id, receiver_id, message_text, challenge_invite_id, created_at</td>
+                        <td>FK to <code>users</code>. Supports standard chat and instant multiplayer game invitations.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- UI/UX & App Flow -->
+        <div class="card">
+            <h2>4. UI/UX Flow & Screen Architecture</h2>
+            <p>Smooth navigation transitioning from passive content consumption to interactive gameplay.</p>
+
+            <div class="grid">
+                <div class="box">
+                    <h4>1. Social Feed Screen</h4>
+                    <ul>
+                        <li>Top Bar: Stories / Reels, Direct Messaging Icon, Game Quick-Launch button (Jaafar Paw Icon).</li>
+                        <li>Card Items: User posts, likes, comments, and embedded "Challenge Jaafar Score" interactive widgets.</li>
+                        <li>Bottom Nav: Feed, Discover, Game Arcade (Center Floating Action Button), Notifications, Profile.</li>
+                    </ul>
+                </div>
+                <div class="box">
+                    <h4>2. Game Lobby Screen</h4>
+                    <ul>
+                        <li>Character Stage: Displays 3D/2D Jaafar wearing currently equipped cosmetics.</li>
+                        <li>Mode Selection:
+                            <ul>
+                                <li><strong>Single Player:</strong> Level Map (World 1, 2, 3...).</li>
+                                <li><strong>2P Co-Op / Versus:</strong> Matchmaking or Invite Friend via DM.</li>
+                            </ul>
+                        </li>
+                        <li>Live Leaderboards tab and Trophy Locker showcase.</li>
+                    </ul>
+                </div>
+                <div class="box">
+                    <h4>3. Gameplay Screen (Adventures of Jaafar)</h4>
+                    <ul>
+                        <li>Controls: On-screen D-pad / Touch Joystick (Left/Right), Jump (A Button), Scratch/Attack (B Button).</li>
+                        <li>HUD: Fish Treat counter, Health (Hearts), Score, Timer, Player 2 Avatar indicator.</li>
+                        <li>Post-Game Screen: "Share Score to Feed", "Replay Level", "Return to Social Hub".</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Game Design Architecture -->
+        <div class="card">
+            <h2>5. Game Mechanics: "Adventures of Jaafar"</h2>
+            <div class="grid">
+                <div class="box">
+                    <h4>Core Mechanics</h4>
+                    <ul>
+                        <li><strong>Movement:</strong> Running, wall-jumping, scratching obstacles/enemies.</li>
+                        <li><strong>Collectibles:</strong> Fish Treats (Points), Golden Catnip (Temporary Invincibility/Speed Boost).</li>
+                        <li><strong>Enemies:</strong> Sewer Rats, Drone Birds, Water Sprinklers.</li>
+                        <li><strong>Objective:</strong> Reach Jaafar's Cozy Bed (Level End Flag) before time runs out.</li>
+                    </ul>
+                </div>
+                <div class="box">
+                    <h4>2-Player Multiplayer Modes</h4>
+                    <ul>
+                        <li><strong>Co-op Stage Clear:</strong> Work together to collect all treats and open locked exit gates.</li>
+                        <li><strong>Fish Race (Versus):</strong> Speedrun to the end line while stealing collectibles from one another.</li>
+                        <li><strong>Netcode:</strong> Client-side prediction with WebSocket server reconciliation for low-latency movement.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Development Roadmap -->
+        <div class="card">
+            <h2>6. Step-by-Step Technical Roadmap</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h4>Phase 1: Foundation & Core Social (Weeks 1 - 4)</h4>
+                    <p>Set up NestJS backend, PostgreSQL database, JWT authentication, and Flutter baseline UI. Implement user registration, feed posting, and image upload via S3.</p>
+                </div>
+                <div class="timeline-item">
+                    <h4>Phase 2: 2D Engine Integration & Single-Player (Weeks 5 - 8)</h4>
+                    <p>Embed Flame game loop within Flutter. Build character physics, tilemap loading (Tiled editor), level progression, single-player mechanics for Jaafar, and score recording APIs.</p>
+                </div>
+                <div class="timeline-item">
+                    <h4>Phase 3: Multiplayer Engine & Social Fusion (Weeks 9 - 12)</h4>
+                    <p>Implement WebSocket real-time relay server for 2-Player modes. Integrate in-game achievements into social feed posts and DM game challenge invites.</p>
+                </div>
+                <div class="timeline-item">
+                    <h4>Phase 4: Polish, Testing & Deployment (Weeks 13 - 16)</h4>
+                    <p>Optimize mobile performance to maintain constant 60 FPS, conduct server load testing for social feeds, run beta releases via TestFlight/Google Play Internal Testing, and publish.</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>Jaafar Social Platformer Concept & Architecture Document &copy; 2026</p>
+    </footer>
+
+</body>
+</html>
